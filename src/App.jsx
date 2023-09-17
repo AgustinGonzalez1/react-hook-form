@@ -17,14 +17,14 @@ function App() {
   console.log(errors.name);
 
   return (
-    <>
-      <form action="" className="flex flex-col" onSubmit={onSubmit}>
+    <div className="bg-slate-900 p-10 rounded-md">
+      <form action="" className="flex flex-col gap-1" onSubmit={onSubmit}>
         {/* name */}
-        <label className="block text-white text-xl" htmlFor="name">
+        <label className="block text-white" htmlFor="name">
           Name
         </label>
         <input
-          className="w-full"
+          className="w-full rounded"
           type="text"
           id="name"
           {...register('name', {
@@ -39,14 +39,14 @@ function App() {
             },
           })}
         />
-        <small className="text-red-500 h-5">{errors.name?.message}</small>
+        <small className="text-red-500 ">{errors.name?.message}</small>
 
         {/* email */}
-        <label className="block text-white text-xl" htmlFor="email">
+        <label className="block text-white" htmlFor="email">
           Email
         </label>
         <input
-          className="w-full"
+          className="w-full rounded"
           type="email"
           name="email"
           id="email"
@@ -58,14 +58,14 @@ function App() {
             },
           })}
         />
-        <small className="text-red-500 h-5">{errors.email?.message}</small>
+        <small className="text-red-500 ">{errors.email?.message}</small>
 
         {/* password */}
-        <label className="block text-white text-xl" htmlFor="password">
+        <label className="block text-white" htmlFor="password">
           Password
         </label>
         <input
-          className="w-full"
+          className="w-full rounded"
           type="password"
           name="password"
           id="password"
@@ -81,14 +81,14 @@ function App() {
             },
           })}
         />
-        <small className="text-red-500 h-5">{errors.password?.message}</small>
+        <small className="text-red-500 ">{errors.password?.message}</small>
 
         {/* confirm password */}
-        <label className="block text-white text-xl" htmlFor="confirmPassword">
+        <label className="block text-white" htmlFor="confirmPassword">
           Confirm Password
         </label>
         <input
-          className="w-full"
+          className="w-full rounded"
           type="password"
           name="confirmPassword"
           id="confirmPassword"
@@ -101,16 +101,16 @@ function App() {
             },
           })}
         />
-        <small className="text-red-500 h-5">
+        <small className="text-red-500 ">
           {errors.confirmPassword?.message}
         </small>
 
         {/* date of birth */}
-        <label className="block text-white text-xl" htmlFor="date">
+        <label className="block text-white" htmlFor="date">
           Date of birth
         </label>
         <input
-          className="w-full"
+          className="w-full rounded"
           type="date"
           name="date"
           id="date"
@@ -128,16 +128,16 @@ function App() {
             },
           })}
         />
-        <small className="text-red-500 h-5">{errors.date?.message}</small>
+        <small className="text-red-500 ">{errors.date?.message}</small>
 
         {/* country */}
-        <label htmlFor="country" className=" text-white text-xl">
+        <label htmlFor="country" className=" text-white">
           Country
         </label>
         <select
           name="country"
           id="country"
-          className="w-full"
+          className="w-full rounded"
           {...register('country', { required: 'Country is required' })}
           defaultValue="none"
         >
@@ -146,30 +146,29 @@ function App() {
           <option value="co">Colombia</option>
           <option value="ar">Argentina</option>
         </select>
-        <small className="text-red-500 h-5">{errors.country?.message}</small>
+        <small className="text-red-500 ">{errors.country?.message}</small>
         {(watch('country') === 'mx' ||
           watch('country') === 'co' ||
           watch('country') === 'ar') && (
           <>
-            <label htmlFor="province" className="text-white text-xl">
+            <label htmlFor="province" className="text-white">
               Province
             </label>
             <input
               type="text"
               name="province"
               id="province"
+              className="w-full rounded"
               {...register('province', {
                 required: 'Province is required',
               })}
             />
-            <small className="text-red-500 h-5">
-              {errors.province?.message}
-            </small>
+            <small className="text-red-500 ">{errors.province?.message}</small>
           </>
         )}
 
         {/* file */}
-        <label htmlFor="file" className="block text-white text-xl">
+        <label htmlFor="file" className="block text-white">
           File
         </label>
         <input
@@ -193,17 +192,20 @@ function App() {
               required: 'Accept terms to proceed.',
             })}
           />
-          <label htmlFor="terms" className=" text-white text-xl">
+          <label htmlFor="terms" className=" text-white">
             I accept the terms and conditions
           </label>
         </div>
-        <small className="text-red-500 h-5">{errors.terms?.message}</small>
+        <small className="text-red-500 ">{errors.terms?.message}</small>
 
-        <button className="bg-blue-500 text-white p-2 rounded-md" type="submit">
+        <button
+          className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-950"
+          type="submit"
+        >
           Send
         </button>
       </form>
-    </>
+    </div>
   );
 }
 
